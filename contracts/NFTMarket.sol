@@ -5,8 +5,8 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
-contract NFTMarket {
-    using Counter for Counters.Counter;
+contract NFTMarket is ReentrancyGuard {
+    using Counters for Counters.Counter;
     Counters.Counter private _itemIds;
     Counters.Counter private _itemsSold;
 
@@ -91,7 +91,7 @@ contract NFTMarket {
         );
 
         idToMarketItem[itemId].seller.transfer(msg.value);
-        ERC721(nftContract).transferFrom(address(this), msg.sender, itemId);
+        ERC721(nftContract).transferFrom(address(this), msg.sender, tokenId);
         idToMarketItem[itemId].owner = payable(msg.sender);
         idToMarketItem[itemId].sold = true;
         _itemsSold.increment();
@@ -150,11 +150,11 @@ contract NFTMarket {
             if (idToMarketItem[i + 1].seller == msg.sender) totalItem += 1;
         }
 
-        MarketItem[] items = new MarketItem[](totalItem);
+        MarketItem[] memory items = new MarketItem[](totalItem);
 
         for (uint256 i = 0; i < totalItem; i++) {
             if (idToMarketItem[i + 1].seller == msg.sender) {
-                uint256 currentId = idToMarketItem[i + 1];
+                uint256 currentId = idToMarketItem[i + 1].itemId;
                 MarketItem memory item = idToMarketItem[currentId];
                 items[currentItemsIdx] = item;
                 currentItemsIdx += 1;

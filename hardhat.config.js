@@ -25,13 +25,13 @@ module.exports = {
 		hardhat: {
 			chainId: 1338,
 		},
-		mumbai: {
-			url: 'https://polygon-amoy.infura.io/v3/05044f2861844e9ead402ab87772c844',
-			accounts: [privateKey],
-		},
-		mainnet: {
-			url: 'https://linea-mainnet.infura.io/v3/05044f2861844e9ead402ab87772c844',
-			accounts: [privateKey],
-		},
+		// mumbai: {
+		// 	url: 'https://polygon-amoy.infura.io/v3/05044f2861844e9ead402ab87772c844',
+		// 	accounts: [privateKey],
+		// },
+		// mainnet: {
+		// 	url: 'https://linea-mainnet.infura.io/v3/05044f2861844e9ead402ab87772c844',
+		// 	accounts: [privateKey],
+		// },
 	},
 };
