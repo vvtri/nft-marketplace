@@ -15,7 +15,9 @@ export default function Home() {
 	}, []);
 
 	const loadNFTs = async () => {
-		const provider = new ethers.providers.JsonRpcProvider();
+		const provider = new ethers.providers.JsonRpcProvider({
+			url: process.env.NEXT_PUBLIC_RPC_URL,
+		});
 		const tokenContract = new ethers.Contract(nftAddress, NFT.abi, provider);
 		const marketContract = new ethers.Contract(
 			nftMarketAddress,
@@ -37,6 +39,7 @@ export default function Home() {
 					image: meta.data.image,
 					name: meta.data.name,
 					description: meta.data.description,
+					itemId: i.itemId,
 				};
 				return item;
 			})
@@ -73,11 +76,11 @@ export default function Home() {
 					{nfts.map((nft) => (
 						<div
 							key={nft.itemId}
-							className='border rounded-lg shadow overflow-hidden'
+							className='border rounded-lg shadow overflow-hidden flex flex-col'
 						>
 							<img src={nft.image} className='w-full object-contain' />
 
-							<div className='p4'>
+							<div className='p-4 mt-auto'>
 								<p className='h-8 text-2xl font-semibold'>{nft.name}</p>
 								<div className='h-[70px] overflow-hidden'>
 									<p className='text-gray-400'>{nft.description}</p>

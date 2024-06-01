@@ -1,4 +1,4 @@
-export const nftAddress = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512';
-export const nftMarketAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
+export const nftAddress = process.env.NEXT_PUBLIC_NFT_ADDRESS;
+export const nftMarketAddress = process.env.NEXT_PUBLIC_MARKET_ADDRESS;
 export const ipfsGateway = 'https://coral-famous-tern-139.mypinata.cloud/ipfs/';
 export const pinataJWT = process.env.NEXT_PUBLIC_PINATA_JWT;

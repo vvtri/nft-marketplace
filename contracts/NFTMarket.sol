@@ -4,6 +4,7 @@ pragma solidity 0.8.4;
 import "@openzeppelin/contracts/utils/Counters.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "hardhat/console.sol";
 
 contract NFTMarket is ReentrancyGuard {
     using Counters for Counters.Counter;
@@ -127,6 +128,9 @@ contract NFTMarket is ReentrancyGuard {
         for (uint256 i; i < totalItemCount; i++) {
             if (msg.sender == idToMarketItem[i + 1].owner) itemCount += 1;
         }
+
+        console.log("after load itemCount", itemCount);
+        console.log("abc");
 
         MarketItem[] memory items = new MarketItem[](itemCount);
 

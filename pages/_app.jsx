@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }) {
 			<nav className='p-6 border-b'>
 				<h1 className='text-4xl font-bold'>Metaverse Marketplace</h1>
 				<div className='flex mt-4'>
-					<Link href='/home'>
+					<Link href='/'>
 						<a className='mr-6 text-pink-500'>Home</a>
 					</Link>
 					<Link href='/create-item'>
